@@ -36,7 +36,7 @@ self.addEventListener('push', function (e) {
   e.waitUntil(self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then(function (cs) {
     /* the app is open in front of the person: it already shows its own bell, no second notification (the "test alert" button is the one exception: the person wants to see it) */
     if (d.tag !== 'test' && cs.some(function (c) { return c.visibilityState === 'visible'; })) { cs.forEach(function (c) { try { c.postMessage({ mzpush: 'refresh' }); } catch (x) {} }); return; }
-    return self.registration.showNotification(String(d.title || 'MEZBAAN'), { body: String(d.body || ''), icon: 'icons/icon-192.png', badge: 'icons/icon-192.png', tag: String(d.tag || 'mz'), renotify: true, data: { open: String(d.open || '') } });
+    return self.registration.showNotification(String(d.title || 'MEZBAAN'), { body: String(d.body || ''), icon: 'icons/icon-192.png', badge: 'badge-96.png', tag: String(d.tag || 'mz'), renotify: true, data: { open: String(d.open || '') } });
   }));
 });
 self.addEventListener('notificationclick', function (e) {
